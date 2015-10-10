@@ -1,2 +1,2 @@
 # dotfiles
-personal configs, few i3wm helpers based on awesome rofi, someone mught find them usefull
+personal configs, few i3wm helpers based on rofi, someone might find them usefull
