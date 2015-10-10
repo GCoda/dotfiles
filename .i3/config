@@ -1,17 +1,16 @@
 set $mod Mod4
 
-
+# loading custom keyboard layout
 exec --no-startup-id setxkbmap -layout "us+my(default),ru(winkeys)" -option "" -print | xkbcomp -I"$HOME/.config/xkb" - $DISPLAY
 
 font pango:Cantarell Bold 10
 
-# Use Mouse+$mod to drag floating windows to their wanted position
+# Use Mouse+Alt to drag floating windows to their wanted position
 floating_modifier Mod1
 
 bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
 
 # kill focused window
-bindsym $mod+q kill
 bindsym $mod+c kill
 
 # start dmenu (a program launcher)
@@ -24,14 +23,11 @@ bindsym $mod+d exec --no-startup-id rofi -show run
 bindsym Mod1+Tab exec --no-startup-id rofi -show window
 
 # win+tab summon window to current workspace
-bindsym $mod+Tab exec --no-startup-id ~/.i3/helpers/i3-summoner
-
-# ctrl+tab summon, its just switching focus if window on same workspace
-bindsym control+Tab exec --no-startup-id ~/.i3/helpers/i3-summoner
+bindsym $mod+Tab exec --no-startup-id ~/.i3/helper/i3-summoner
 
 # Layout save and load helpers
 bindsym XF86Back exec --no-startup-id ~/.i3/helpers/i3-saver
-bindsym XF86Forward exec --no-startup-id ~/.i3/helpers/i3-loader
+bindsym XF86Forward exec --no-startup-id ~/.i3/helper/i3-loader
 
 bindsym $mod+z move scratchpad
 bindsym $mod+Mod1+z scratchpad show
@@ -125,16 +121,10 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Shutdown???' -b 'Logout' 'xfce4-session-logout' -b 'Reboot' 'systemctl reboot' -b 'Shutdown' 'systemctl poweroff'"
 
-#bindsym $mod+Shift+w exec "systemctl poweroff"
-
 # resize window (you can also use the mouse for that)
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
@@ -153,16 +143,10 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# dont like it anymore
-#bindsym $mod+space exec "setxkbmap us"
-#bindsym $mod+Mod1+space exec "setxkbmap ru"
-
-# this is a bit better, win+d will always work, and typing in rofi
+# win+d will always work
 bindsym Menu exec --no-startup-id "~/.i3/helpers/xkb-switch-to-us; xkb-switch --next"
 bindsym Super_L exec --no-startup-id "~/.i3/helpers/xkb-switch-to-us"
 
-
-#colors to match Libra-Dark gtk theme
 bar {
   tray_output DP1
   status_command i3status -c ~/.i3/i3status #green_good color in config
@@ -195,7 +179,6 @@ client.urgent		#505050	#303030	#ff5050
 # Instant call for feh make picture wierd on second display
 #exec --no-startup-id feh --randomize --bg-fill ~/Pictures/Wallpapers/*
 
-
 # Makes mouse dissapear if not moving
 exec --no-startup-id "unclutter -grab &"
 
@@ -210,7 +193,6 @@ new_window normal 0px
 workspace_layout tabbed
 
 exec --no-startup-id "xrandr --output VGA1 --right-of DP1"
-exec --no-startup-id "sleep 0.1; xrandr --output DP1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --output VGA1 --mode 1280x1024 --pos 2560x416 --rotate normal"
 exec --no-startup-id "sleep 0.2; feh --randomize --bg-fill ~/Pictures/Wallpapers/*"
 
 # Separate display and make it available over vnc on LAN NO PASSWORD!!!!!
@@ -218,13 +200,6 @@ exec --no-startup-id "sleep 0.2; feh --randomize --bg-fill ~/Pictures/Wallpapers
 # Also VGA can be Virtual1 to connect from tablet or smthng
 exec --no-startup-id "sleep 1; x11vnc -nap -wait 50 -repeat -noxdamage -display :0 -allow 192.168.1. -clip xinerama1 -forever"
 
-# sync, shadows and opacity
+# vsync, shadows and opacity
 # making wierd thing to terminal
 exec --no-startup-id "compton --config ~/.compton.conf"
-
-for_window [class="Plasma-desktop"] border none
-for_window [class="Plasma-desktop"] floating enable
-for_window [class="krunner"] border none
-for_window [class="Kmix"] floating enable
-for_window [class="Plasmoidviewer"] floating enable
-for_window [class="Klipper"] floating enable, border none

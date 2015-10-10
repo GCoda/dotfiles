@@ -13,3 +13,4 @@ b /etc/pacman.conf /etc
 b ~/.i3
 b ~/.zshrc
 b ~/.bashrc
+b ~/.compton.conf
