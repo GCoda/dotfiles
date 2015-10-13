@@ -14,3 +14,7 @@ b ~/.i3
 b ~/.zshrc
 b ~/.bashrc
 b ~/.compton.conf
+b ~/.Xresources
+b ~/.config/mpv .config
+b ~/.config/xkb .config
+b ~/.config/xfce4/terminal .config/xfce4
