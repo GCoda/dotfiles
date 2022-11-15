@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# $TERMINAL is non standart variable, took a hint from i3-sensible-terminal
+# command -v is silent alternative to `which $TERMINAL`
+# and there is no need to check if variable is empty
+
+if command -v "$TERMINAL" > /dev/null; then exec "$TERMINAL" &
+elif command -v "com.raggesilver.BlackBox"; then exec com.raggesilver.BlackBox &
+elif command -v "alacritty"; then exec alacritty & 
+elif command -v "gnome-terminal"; then exec gnome-terminal &
+elif command -v "termite"; then exec termite &
+else exec xterm &
+fi

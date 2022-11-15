@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if ! command -v "xkb-switch" >/dev/null 2>&1; then
+  printf "%s\\n" "you need to install 'xkb-switch' to run this program" >&2
+  exit 1
+fi
+
+while [ $(xkb-switch -p) != "us" ]; do
+  xkb-switch --next
+done
+
+xkb-switch --next

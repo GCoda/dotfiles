@@ -1,13 +1,61 @@
-![Screenshot](https://raw.githubusercontent.com/gcoda/dotfiles/master/screenshot.png)
+# `./setup.sh`
 
-### dotfiles
-personal configs, few i3wm helpers based on rofi, someone might find them usefull
+`./setup.sh` will extract all `bash #x` blocks from `README.md` and pipe them to bash...
 
-### Software
-- [i3](https://i3wm.org/) - tiling windows manager
-- [antigen](https://github.com/zsh-users/antigen) - for managing zsh plugins
-- [deer](https://github.com/Vifon/deer) - simple filemanager
-- [vifm](https://github.com/vifm/vifm) - vim-like file manager
-- [rofi](https://davedavenport.github.io/rofi) - for navigating between windows and launching apps
-- jshon - for my i3wm helpers
-- [compton](https://github.com/chjj/compton) - for nice shadows and vsync on i3wm
+## Create Edge profile .desktop links
+
+- `Default` named **Edge Personal**
+- `Profile 1` named **Edge Work**
+
+```bash #x
+mkdir -p ~/.local/share/applications/
+cp ./application-launchers/* ~/.local/share/applications/
+```
+
+
+## Alternatively we can use single `.desktop` file  with custom actions
+```ini
+[Desktop Action new-private-window]
+Name=First Profile after Default
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=/app/bin/edge com.microsoft.Edge --profile-directory="CUSTOM PROFILE DIR
+```
+## Custom ENV variables
+
+Adds flatpak binaries and custom scripts to `PATH`
+
+```bash #x
+mkdir -p ~/.config/environment.d
+cp ./dotfiles/environment.d/* ~/.config/environment.d
+```
+
+Copy custom binaries 
+
+```bash #x
+mkdir -p ~/.local/bin
+cp ./dotfiles/bin/* ~/.local/bin
+```
+
+Copy dotfiles assumes `gnome-console` and `micro`
+
+>   pacman -S micro 
+>   pacman -S zoxide
+>   pacman -S fnm
+
+
+```bash #x
+
+mkdir -p $HOME/.fzf/{shell,bin}
+
+touch "$HOME/.fzf/shell/key-bindings.{bash,zsh}"
+
+mkdir -p ~/.config/
+
+cp ./dotfiles/bashrc ~/.bashrc
+cp ./dotfiles/bashrc ~/.bashrc
+
+echo keyd wants keyboard config as root
+
+sudo cp ./dotfiles/keyd-default.conf /etc/keyd/default.conf
+
+```
+

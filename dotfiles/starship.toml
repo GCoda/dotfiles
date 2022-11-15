@@ -1,0 +1,173 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# format    = "$all"
+format = """[🧬](green) $time\
+[$cmd_duration]()\
+$username\
+$directory\
+$git_branch\
+$git_status\
+$c\
+$elixir\
+$elm\
+$golang\
+$haskell\
+$java\
+$julia\
+$nodejs\
+${custom.typescript}\
+$nim\
+$rust\
+[]()\
+$docker_context\
+$jobs\
+$line_break\
+$character\
+[]()\
+"""
+add_newline = false
+
+# ${custom.file_number}\
+# ${custom.folder_number}\
+
+
+
+[line_break]
+disabled = true
+
+[cmd_duration]
+format               = " [E](bold red)[$duration]($style)"
+min_time_to_notify   = 1_000
+notification_timeout = 1_000
+
+[character]
+success_symbol = "[ \\$](bold green)"
+error_symbol   = "[ \\$](bold red)"
+
+[username]
+show_always = false
+format      = ' [$user]($style)'
+
+[directory]
+format                    = " [$path]($style)"
+truncation_length         = 2
+truncation_symbol         = "…/"
+fish_style_pwd_dir_length = 1
+
+# Here is how you can shorten some long paths by text replacement
+# similar to mapped_locations in Oh My Posh:
+# [directory.substitutions]
+# "Documents" = "Docs"
+# Keep in mind that the order matters. For example:
+# "Important Documents" = " !!! "
+# will not be replaced, because "Documents" was already substituted before.
+
+[c]
+symbol = ""
+
+[docker_context]
+symbol = ""
+
+[elixir]
+symbol = ""
+
+[elm]
+symbol = ""
+
+[git_branch]
+symbol = ""
+format = ' [$symbol$branch]($style)'
+
+[git_status]
+format = '[$all_status$ahead_behind]($style)'
+
+[golang]
+# symbol = ""
+
+[haskell]
+symbol = ""
+
+[java]
+symbol = ""
+
+[julia]
+symbol = ""
+
+[nodejs]
+detect_files = ["package.json", ".node-version", "!.bashrc"]
+symbol       = " "
+format       = ' [$symbol($version)]($style)'
+
+[custom.typescript]
+style             = "fg:#3465A4"
+format            = " [$symbol$output]($style)"
+symbol            = ""
+command           = "tsc --version | sed -e s@Version\\ @@"
+detect_folders    = ["node_modules"]
+detect_files      = ["tsconfig.json"]
+detect_extensions = ["ts"]
+shell             = ["sh"]
+
+[time]
+disabled    = false
+time_format = "%R"
+format      = '[$time]($style)'
+
+[custom.file_number]
+command     = "find . -maxdepth 1 -type f -not -name '.DS_Store' | wc -l"
+when        = "exit 0"                                                    # run always
+symbol      = " "
+description = "Number of files in the current working directory"
+format      = ' [$symbol$output]($style)'
+style       = "fg:gray"
+shell       = ["sh"]
+
+[custom.folder_number]
+command     = "find . -maxdepth 1 -type d -not -name '.git' -not -name '.' | wc -l"
+when        = "exit 0"
+symbol      = " "
+description = "Number of folders in the current working directory"
+format      = ' [$symbol$output]($style)'
+style       = "fg:gray"
+shell       = ["sh"]
+
+[custom.giturl]
+disabled = true
+description = "Display symbol for remote Git server"
+command = """
+GIT_REMOTE=$(command git ls-remote --get-url 2> /dev/null)
+if [[ "$GIT_REMOTE" =~ "github" ]]; then
+    GIT_REMOTE_SYMBOL=" "
+elif [[ "$GIT_REMOTE" =~ "gitlab" ]]; then
+    GIT_REMOTE_SYMBOL=" "
+elif [[ "$GIT_REMOTE" =~ "bitbucket" ]]; then
+    GIT_REMOTE_SYMBOL=" "
+elif [[ "$GIT_REMOTE" =~ "git" ]]; then
+    GIT_REMOTE_SYMBOL=" "
+else
+    GIT_REMOTE_SYMBOL=" "
+fi
+echo "$GIT_REMOTE_SYMBOL "
+"""
+when = 'git rev-parse --is-inside-work-tree 2> /dev/null'
+format = "at $output  "
+
+# Here is the PowerShell version:
+
+[custom.giturl-pwsh]
+disabled = true
+description = "Display symbol for remote Git server (pwsh)"
+command = """
+$gitRemote = git ls-remote --get-url
+$symbol = ' ' # If no Git Remote is returned.
+switch -regex ($gitRemote) {\
+    'github'    { $symbol = ' ' }\
+    'gitlab'    { $symbol = ' ' }\
+    'bitbucket' { $symbol = ' ' }\
+     Default    { $symbol = ' ' }\
+}
+echo $symbol
+"""
+when = "git rev-parse --is-inside-work-tree"
+shell = ["pwsh", "-NoProfile", "-Command", "-"]

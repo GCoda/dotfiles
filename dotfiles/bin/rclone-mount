@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+
+function mount_remote () {
+  # Remove "/" its not legal char
+  # S ometimes shell completion suggests folders is path, and path is often ~
+    
+  local name=$(tr -d "/" <<<$1)
+
+  if [ -z $name ]; then
+    echo "--------------------------------------" 
+    echo "RClone config mounts:" 
+    rclone listremotes | sed -e "s/\://"
+    echo "--------------------------------------" 
+    return
+  fi
+  
+  local remote_exists=$( rclone listremotes | grep -oP $name )
+  if [ -z $remote_exists ]; then
+    echo "--------------------------------------" 
+    echo "$name - Not Found" 
+    echo "--------------------------------------" 
+    echo "RClone config mounts:" 
+    rclone listremotes | sed -e "s/\://"
+    echo "--------------------------------------" 
+    return
+  fi
+
+  mkdir -p $HOME/$name
+  rclone mount \
+    "$name:"/ \
+    $HOME/$name \
+    --cache-dir ~/.cache/rclone \
+    --allow-non-empty \
+    --allow-other \
+    --use-server-modtime \
+    --vfs-cache-max-size 2Gi \
+    --vfs-cache-mode full \
+    --vfs-cache-poll-interval 5m \
+    --vfs-cache-max-age 8760h \
+    --attr-timeout 8760h \
+    --dir-cache-time 8760h \
+    --poll-interval 1m \
+    --fast-list \
+    --transfers 10 \
+    --daemon \
+    --log-file  ~/.cache/rclone/$name.log
+}
+
+mount_remote $1
+
+# rclone rc mount/mount \
+#   --rc-user=USER \
+#   --rc-pass=PASS \
+#   fs=drive_YYYY: \
+#   mountPoint=/path/to/mountpoint/YYYY \
+#   -a allow-other \
+#   -o vfs-cache-mode=full \
+#   -o cache-dir=/path/to/cachedir/ \
+#   -o vfs-cache-poll-interval=20m \
+#   -o vfs-cache-max-age=8760h \
+#   -o attr-timeout=8700h \
+#   -o dir-cache-time=8760h \
+#   -o poll-interval=30s \
+#   --transfers 40

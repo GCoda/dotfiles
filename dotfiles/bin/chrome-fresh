@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+mkdir -p /tmp/clean-chrome-userdata
+chromium --disable-extensions --user-data-dir='/tmp/clean-chrome-userdata'
+rm -rf /tmp/clean-chrome-userdata
