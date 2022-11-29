@@ -1,0 +1,37 @@
+{
+  "git.autofetch": true,
+  "editor.fontFamily": "'Comic Code Ligatures Regular','Liga Go Mono','Droid Sans Mono', 'monospace', monospace",
+  "editor.fontSize": 16,
+  "editor.tokenColorCustomizations": {
+    "[i Light]": {
+      "comments": "#000066",
+    }
+  },
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.tabSize": 2,
+  "editor.fontLigatures": true,
+  "editor.cursorSurroundingLines": 10,
+  "editor.formatOnSaveMode": "modificationsIfAvailable",
+  "workbench.view.alwaysShowHeaderActions": true,
+  "workbench.tree.indent": 24,
+  "workbench.sideBar.location": "right",
+  "workbench.colorTheme": "i Light",
+  "workbench.preferredLightColorTheme": "i Light",
+  "workbench.preferredHighContrastLightColorTheme": "i Light",
+  "workbench.preferredDarkColorTheme": "i Night",
+  "workbench.preferredHighContrastColorTheme": "i Night",
+  "workbench.iconTheme": "vs-minimal",
+  "workbench.activityBar.iconClickBehavior": "focus",
+  "workbench.colorCustomizations": {
+    "[i Light]": {
+      "gitDecoration.ignoredResourceForeground": "#acacac"
+    }
+  },
+  "window.menuBarVisibility": "toggle",
+  "explorer.confirmDragAndDrop": false,
+  "files.associations": {
+    "*.json": "jsonc"
+  },
+  // "docker.dockerPath": "/usr/local/bin/docker"
+}

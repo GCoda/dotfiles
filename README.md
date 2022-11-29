@@ -75,3 +75,31 @@ yay --nocombinedupgrade --save
 dconf write /org/gnome/desktop/media-handling/automount false
 dconf write /org/gnome/desktop/media-handling/automount-open false
 ```
+
+## Should link VSCode configs, remove if exist?
+
+> ~/.config/Code/User/settings.json
+> ~/.var/app/com.vscodium.codium/config/VSCodium/User/settings.json
+> ~/.var/app/com.visualstudio.code/config/Code/User/settings.json
+
+```bash
+
+# VSCode package 
+rm ~/.config/Code/User/settings.json
+rm ~/.config/Code/User/keybindings.json
+ln ./dotfiles/VSCode/User/settings.json ~/.config/Code/User/settings.json
+ln ./dotfiles/VSCode/User/keybindings.json ~/.config/Code/User/keybindings.json
+
+# VSCodium flatpak 
+rm ~/.var/app/com.vscodium.codium/config/VSCodium/User/settings.json
+rm ~/.var/app/com.vscodium.codium/config/VSCodium/User/keybindings.json
+ln ./dotfiles/VSCode/User/settings.json ~/.var/app/com.vscodium.codium/config/VSCodium/User/settings.json
+ln ./dotfiles/VSCode/User/keybindings.json ~/.var/app/com.vscodium.codium/config/VSCodium/User/keybindings.json
+
+# VSCode flatpak 
+rm ~/.var/app/com.visualstudio.code/config/Code/User/settings.json
+rm ~/.var/app/com.visualstudio.code/config/Code/User/keybindings.json
+ln ./dotfiles/VSCode/User/settings.json ~/.var/app/com.visualstudio.code/config/Code/User/settings.json
+ln ./dotfiles/VSCode/User/keybindings.json ~/.var/app/com.visualstudio.code/config/Code/User/keybindings.json
+
+```
