@@ -1,5 +1,6 @@
 {
   "git.autofetch": true,
+  "git.confirmSync": false,
   "editor.fontFamily": "'Comic Code Ligatures Regular','Liga Go Mono','Droid Sans Mono', 'monospace', monospace",
   "editor.fontSize": 16,
   "editor.tokenColorCustomizations": {
