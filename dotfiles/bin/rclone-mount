@@ -26,6 +26,9 @@ function mount_remote () {
   fi
 
   mkdir -p $HOME/$name
+  mkdir -p ~/.cache/rclone
+  touch ~/.cache/rclone/$name.log
+  
   rclone mount \
     "$name:"/ \
     $HOME/$name \
@@ -43,7 +46,7 @@ function mount_remote () {
     --fast-list \
     --transfers 10 \
     --daemon \
-    --log-file  ~/.cache/rclone/$name.log
+    --log-file ~/.cache/rclone/$name.log
 }
 
 mount_remote $1
