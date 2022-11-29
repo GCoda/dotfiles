@@ -46,16 +46,32 @@ Copy dotfiles assumes `gnome-console` and `micro`
 
 mkdir -p $HOME/.fzf/{shell,bin}
 
-touch "$HOME/.fzf/shell/key-bindings.{bash,zsh}"
+touch $HOME/.fzf/shell/key-bindings.bash
+touch $HOME/.fzf/shell/key-bindings.zsh
 
-mkdir -p ~/.config/
+mkdir -p ~/.config/fish
 
-cp ./dotfiles/bashrc ~/.bashrc
-cp ./dotfiles/bashrc ~/.bashrc
+cp ./dotfiles/.bashrc ~/.bashrc
+cp ./dotfiles/.zshrc ~/.zshrc
+cp ./dotfiles/config.fish ~/.config/fish/config.fish
 
 echo keyd wants keyboard config as root
 
 sudo cp ./dotfiles/keyd-default.conf /etc/keyd/default.conf
+sudo cp ./etc/pacman.conf /etc/pacman.conf
+
+yay --norebuild --noredownload --nocleanafter --save
+yay --notimeupdate --save
+yay --noeditmenu --nodiffmenu --save
+yay --noremovemake --save
+yay --nocombinedupgrade --save
 
 ```
 
+
+## Disable gnome automount
+
+```bash #x
+dconf write /org/gnome/desktop/media-handling/automount false
+dconf write /org/gnome/desktop/media-handling/automount-open false
+```
