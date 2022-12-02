@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+set -e
+
+function yt_music () {
+
+  local url=$1
+
+  yt-dlp -f 141  \
+    --add-metadata \
+    --embed-thumbnail \
+    --cookies-from-browser edge \
+    --download-archive ~/.cache/download_music_archive.txt  \
+    -o "%(release_year,release_date>%Y,upload_date>%Y)s - %(album,playlist)s/%(playlist_index)s %(track,title)s.%(ext)s" \
+    "$url"
+}
+
+yt_music $1
+
