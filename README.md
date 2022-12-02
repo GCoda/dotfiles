@@ -103,3 +103,12 @@ ln ./dotfiles/VSCode/User/settings.json ~/.var/app/com.visualstudio.code/config/
 ln ./dotfiles/VSCode/User/keybindings.json ~/.var/app/com.visualstudio.code/config/Code/User/keybindings.json
 
 ```
+
+
+## Link Microsoft Edge config folder from flatpak package
+
+`youtube-dl` or `yt-dlp` can use cookies from browser, but they look at default path
+
+```bash
+ln -s ~/.var/app/com.microsoft.Edge/config/microsoft-edge ~/.config/microsoft-edge
+```
