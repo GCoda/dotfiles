@@ -12,6 +12,12 @@ mkdir -p ~/.local/share/applications/
 cp ./application-launchers/* ~/.local/share/applications/
 ```
 
+## Copy configs
+
+```bash #x
+cp ./dotfiles/starship.toml ~/.config/starship.toml
+```
+
 ## Git config defaults 
 
 copy name and email from latest commit of this repo
@@ -121,3 +127,4 @@ ln ./dotfiles/VSCode/User/keybindings.json ~/.var/app/com.visualstudio.code/conf
 ```bash
 ln -s ~/.var/app/com.microsoft.Edge/config/microsoft-edge ~/.config/microsoft-edge
 ```
+

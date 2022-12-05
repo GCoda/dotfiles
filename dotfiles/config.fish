@@ -96,6 +96,6 @@ function vsr -d "List recently opened files with vscode"
 end
 
 
-function fish_user_key_bindings
-	fzf_key_bindings
-end
+# function fish_user_key_bindings
+#	 fzf_key_bindings
+# end
