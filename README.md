@@ -12,6 +12,15 @@ mkdir -p ~/.local/share/applications/
 cp ./application-launchers/* ~/.local/share/applications/
 ```
 
+## Git config defaults 
+
+copy name and email from latest commit of this repo
+
+```bash #x
+git config --global user.email "$(git log -1 --pretty=format:'%ae')"
+git config --global user.name "$(git log -1 --pretty=format:'%an')"
+git config --global init.defaultBranch main
+```
 
 ## Alternatively we can use single `.desktop` file  with custom actions
 ```ini
