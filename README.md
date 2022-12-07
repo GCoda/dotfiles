@@ -124,7 +124,7 @@ ln ./dotfiles/VSCode/User/keybindings.json ~/.var/app/com.visualstudio.code/conf
 
 `youtube-dl` or `yt-dlp` can use cookies from browser, but they look at default path
 
-```bash
+```bash #x
 ln -s ~/.var/app/com.microsoft.Edge/config/microsoft-edge ~/.config/microsoft-edge
 ```
 

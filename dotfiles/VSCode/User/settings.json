@@ -1,39 +1,51 @@
 {
   "git.autofetch": true,
   "git.confirmSync": false,
-  "editor.fontFamily": "'Comic Code Ligatures Regular','Liga Go Mono','Droid Sans Mono', 'monospace', monospace",
-  "editor.fontSize": 16,
-  "editor.tokenColorCustomizations": {
-    "[i Light]": {
-      "comments": "#000066",
-    }
-  },
-  "editor.formatOnSave": true,
-  "editor.formatOnPaste": true,
-  "editor.tabSize": 2,
-  "editor.fontLigatures": true,
   "editor.cursorSurroundingLines": 10,
+  "editor.fontFamily": "'ComicCodeLigatures Nerd Font','Comic Code Ligatures Regular','Liga Go Mono','Droid Sans Mono', 'monospace', monospace",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 16,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
   "editor.formatOnSaveMode": "modificationsIfAvailable",
   "editor.minimap.enabled": false,
-  "workbench.view.alwaysShowHeaderActions": true,
-  "workbench.tree.indent": 24,
-  "workbench.sideBar.location": "right",
-  "workbench.colorTheme": "i Light",
-  "workbench.preferredLightColorTheme": "i Light",
-  "workbench.preferredHighContrastLightColorTheme": "i Light",
-  "workbench.preferredDarkColorTheme": "i Night",
-  "workbench.preferredHighContrastColorTheme": "i Night",
-  "workbench.iconTheme": "vs-minimal",
-  "workbench.activityBar.iconClickBehavior": "focus",
-  "workbench.colorCustomizations": {
-    "[i Light]": {
-      "gitDecoration.ignoredResourceForeground": "#acacac"
+  "editor.tabSize": 2,
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+  "editor.tokenColorCustomizations": {
+    "[Base16 Grayscale Light]": {
+      "comments": "#000066"
     }
   },
-  "window.menuBarVisibility": "toggle",
   "explorer.confirmDragAndDrop": false,
   "files.associations": {
     "*.json": "jsonc"
   },
+  "workbench.colorCustomizations": {
+    "[Base16 Grayscale Light]": {
+      "gitDecoration.ignoredResourceForeground": "#999"
+    }
+  },
+  "workbench.activityBar.iconClickBehavior": "focus",
+  "workbench.colorTheme": "Base16 Grayscale Light",
+  "workbench.iconTheme": "vs-minimal",
+  "workbench.preferredDarkColorTheme": "Base16 Grayscale Dark",
+  "workbench.preferredHighContrastColorTheme": "Base16 Grayscale Dark",
+  "workbench.preferredHighContrastLightColorTheme": "Base16 Grayscale Dark",
+  "workbench.preferredLightColorTheme": "Base16 Grayscale Light",
+  "workbench.sideBar.location": "right",
+  "workbench.tree.indent": 24,
+  "workbench.view.alwaysShowHeaderActions": true,
+  "window.menuBarVisibility": "toggle",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.maxTokenizationLineLength": 2500
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.maxTokenizationLineLength": 2500
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
   // "docker.dockerPath": "/usr/local/bin/docker"
 }
