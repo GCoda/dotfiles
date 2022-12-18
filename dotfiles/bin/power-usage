@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -e
+
+power=$(cat /sys/class/power_supply/BAT1/power_now)
+
+echo $power/1000 | bc
+
+# volt=$(cat /sys/class/power_supply/BAT1/voltage_now)
+# energy=$(cat /sys/class/power_supply/BAT1/energy_now)
+# echo $energy/$power | bc
