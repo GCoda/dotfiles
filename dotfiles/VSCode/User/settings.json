@@ -47,6 +47,7 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "git.ignoreRebaseWarning": true
+  "git.ignoreRebaseWarning": true,
+  "redhat.telemetry.enabled": false
   // "docker.dockerPath": "/usr/local/bin/docker"
 }
